@@ -3,25 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Card</title>
+    <title>For My Pika ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="birthday-card">
-        <div class="card-front">
-            <div class="front-content">
-                <h2>Happy Birthday!</h2>
-                <p>Klik/Hover untuk Membuka</p>
-                <div class="cake">🎂</div>
-            </div>
-        </div>
-        
-        <div class="card-inside">
-            <h2>Untukmu,</h2>
-            <p>Semoga hari ini penuh dengan kebahagiaan, tawa, dan semua hal yang kamu impikan.</p>
-            <p class="wish">Wish you all the best! ✨</p>
-            <p class="signature">- Dari Temanmu</p>
+    <div class="hearts-container"></div>
+
+    <div id="login-page" class="page active">
+        <div class="glass-box">
+            <h1>Halo Sayang.. ❤️</h1>
+            <p>Masukkan namamu untuk buka kejutan:</p>
+            <input type="text" id="nameInput" placeholder="Nama panggilan kamu...">
+            <button class="btn-primary" onclick="checkName()">Buka Sayang</button>
+            <p id="error-msg" style="color: #ff4d4d; display: none; margin-top: 10px;">Eh, kamu bukan Pika-ku ya? 🤨</p>
         </div>
     </div>
+
+    <div id="landing-page" class="page">
+        <div class="glass-box">
+            <h1>Happy Birthday, Pika! 🎂</h1>
+            <p>Aku punya sesuatu yang kecil buat kamu...</p>
+            <div class="menu-grid">
+                <button class="menu-btn" onclick="showPage('card-page')">💌 Surat Cinta</button>
+                <button class="menu-btn" onclick="showPage('photo-page')">📸 Momen Kita</button>
+                <button class="menu-btn" onclick="showPage('music-page')">🎵 Lagu Kita</button>
+                <button class="menu-btn" onclick="showPage('video-page')">🎥 Video Untukmu</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="card-page" class="page">
+        <button class="back-btn" onclick="showPage('landing-page')">⬅ Kembali</button>
+        <div class="birthday-card">
+            <div class="card-front">
+                <div class="front-content">
+                    <h2>Klik Sayang ❤️</h2>
+                    <div class="heart-icon">💖</div>
+                </div>
+            </div>
+            <div class="card-inside">
+                <h2>Dear Pika,</h2>
+                <p>Terima kasih sudah jadi bagian terbaik dalam hidupku. Selamat ulang tahun ya, sayang!</p>
+                <p class="wish">Love you always! 💍</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkName() {
+            const name = document.getElementById('nameInput').value.toLowerCase();
+            if (name.includes("pika")) {
+                showPage('landing-page');
+                createHearts(); // Mulai efek hati
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function createHearts() {
+            const container = document.querySelector('.hearts-container');
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart-fly');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                container.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 500);
+        }
+
+        document.querySelector('.birthday-card').addEventListener('click', function() {
+            this.classList.toggle('open');
+        });
+    </script>
 </body>
 </html>
