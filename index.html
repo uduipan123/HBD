@@ -10,41 +10,60 @@
     <div class="hearts-container"></div>
 
     <div id="login-page" class="page active">
-        <div class="glass-box">
-            <h1>Halo Sayang.. ❤️</h1>
-            <p>Masukkan namamu untuk buka kejutan:</p>
-            <input type="text" id="nameInput" placeholder="Nama panggilan kamu...">
-            <button class="btn-primary" onclick="checkName()">Buka Sayang</button>
-            <p id="error-msg" style="color: #ff4d4d; display: none; margin-top: 10px;">Eh, kamu bukan Pika-ku ya? 🤨</p>
+        <div class="login-container">
+            <h1>Haii Sayang.. ❤️</h1>
+            <p>Ketik namamu di sini ya:</p>
+            <input type="text" id="nameInput" placeholder="Nama kamu...">
+            <button class="btn-login" onclick="checkName()">Masuk</button>
+            <p id="error-msg">Akses ditolak! Bukan Pika-ku 🤨</p>
         </div>
     </div>
 
     <div id="landing-page" class="page">
-        <div class="glass-box">
-            <h1>Happy Birthday, Pika! 🎂</h1>
-            <p>Aku punya sesuatu yang kecil buat kamu...</p>
-            <div class="menu-grid">
-                <button class="menu-btn" onclick="showPage('card-page')">💌 Surat Cinta</button>
-                <button class="menu-btn" onclick="showPage('photo-page')">📸 Momen Kita</button>
-                <button class="menu-btn" onclick="showPage('music-page')">🎵 Lagu Kita</button>
-                <button class="menu-btn" onclick="showPage('video-page')">🎥 Video Untukmu</button>
+        <div class="header">
+            <h2>Home Page</h2>
+        </div>
+        <div class="menu-container">
+            <div class="menu-item" onclick="showPage('card-page')">
+                <div class="icon-box">💌</div>
+                <p>Kartu Ucapan</p>
+            </div>
+            <div class="menu-item" onclick="showPage('photo-page')">
+                <div class="icon-box">📸</div>
+                <p>Momen Kita</p>
+            </div>
+            <div class="menu-item" onclick="showPage('music-page')">
+                <div class="icon-box">🎵</div>
+                <p>Lagu Kita</p>
+            </div>
+            <div class="menu-item" onclick="showPage('video-page')">
+                <div class="icon-box">🎥</div>
+                <p>Video Spesial</p>
+            </div>
+            <div class="menu-item">
+                <div class="icon-box">📈</div>
+                <p>Our Stats</p>
+            </div>
+            <div class="menu-item">
+                <div class="icon-box">✉️</div>
+                <p>Chat Sayang</p>
             </div>
         </div>
     </div>
 
     <div id="card-page" class="page">
-        <button class="back-btn" onclick="showPage('landing-page')">⬅ Kembali</button>
-        <div class="birthday-card">
-            <div class="card-front">
-                <div class="front-content">
+        <div class="header-pink">
+            <button class="back-link" onclick="showPage('landing-page')">⬅ Kembali</button>
+        </div>
+        <div class="card-content">
+            <div class="birthday-card">
+                <div class="card-front">
                     <h2>Klik Sayang ❤️</h2>
-                    <div class="heart-icon">💖</div>
                 </div>
-            </div>
-            <div class="card-inside">
-                <h2>Dear Pika,</h2>
-                <p>Terima kasih sudah jadi bagian terbaik dalam hidupku. Selamat ulang tahun ya, sayang!</p>
-                <p class="wish">Love you always! 💍</p>
+                <div class="card-inside">
+                    <h3>Happy Bday Pika!</h3>
+                    <p>Semoga bahagia terus bareng aku ya!</p>
+                </div>
             </div>
         </div>
     </div>
@@ -54,7 +73,7 @@
             const name = document.getElementById('nameInput').value.toLowerCase();
             if (name.includes("pika")) {
                 showPage('landing-page');
-                createHearts(); // Mulai efek hati
+                createHearts();
             } else {
                 document.getElementById('error-msg').style.display = 'block';
             }
@@ -70,9 +89,9 @@
             setInterval(() => {
                 const heart = document.createElement('div');
                 heart.innerHTML = '❤️';
-                heart.classList.add('heart-fly');
+                heart.className = 'heart-fly';
                 heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
                 container.appendChild(heart);
                 setTimeout(() => heart.remove(), 5000);
             }, 500);
