@@ -1,55 +1,72 @@
+* { box-sizing: border-box; }
 body {
     margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f2f5;
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); /* Pink Gradient */
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
 }
 
-.glass-box {
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+.page { display: none; width: 100%; max-width: 400px; height: 100vh; background: white; flex-direction: column; }
+.page.active { display: flex; }
+
+/* Page 1: Login */
+.login-container { padding: 40px; text-align: center; margin-top: 100px; }
+.btn-login { padding: 10px 20px; background: #00a2ff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+#error-msg { color: red; display: none; margin-top: 10px; font-size: 14px; }
+
+/* Page 2: Home Page (Gaya Gambar) */
+.header {
+    background-color: #00a2ff; /* Warna biru sesuai gambar */
+    color: white;
+    padding: 20px;
     text-align: center;
 }
 
-.menu-btn {
-    padding: 15px;
-    background: white;
-    color: #ff4081;
-    border: none;
-    border-radius: 12px;
-    font-weight: bold;
+.menu-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Membagi 2 kolom */
+    gap: 20px;
+    padding: 30px 20px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.2s;
 }
 
-.menu-btn:hover {
-    transform: scale(1.05);
-    background: #ff4081;
-    color: white;
+.menu-item:active { transform: scale(0.9); }
+
+.icon-box {
+    width: 80px;
+    height: 80px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    margin-bottom: 10px;
 }
 
-/* Efek Hati Melayang */
-.heart-fly {
-    position: fixed;
-    bottom: -10px;
-    font-size: 20px;
-    animation: fly linear forwards;
-    z-index: -1;
-}
+.menu-item p { margin: 0; font-size: 14px; color: #555; font-weight: 500; }
 
-@keyframes fly {
-    to {
-        transform: translateY(-110vh) rotate(360deg);
-        opacity: 0;
-    }
-}
+/* Page 3: Kartu Ucapan */
+.header-pink { background: #ff4081; padding: 15px; }
+.back-link { background: none; border: none; color: white; cursor: pointer; }
+.card-content { display: flex; justify-content: center; align-items: center; height: 100%; }
 
-/* Kode kartu tetap sama seperti sebelumnya, sesuaikan warna ke #ff4081 */
+/* Kartu 3D (Singkat) */
+.birthday-card { width: 250px; height: 350px; position: relative; transform-style: preserve-3d; transition: 1s; }
+.card-front { background: #ff4081; color: white; position: absolute; width: 100%; height: 100%; z-index: 2; transform-origin: left; transition: 1s; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
+.card-inside { background: #fff; border: 1px solid #ddd; position: absolute; width: 100%; height: 100%; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 10px; text-align: center; padding: 10px; }
+.birthday-card.open .card-front { transform: rotateY(-160deg); }
+
+/* Efek Hati */
+.heart-fly { position: fixed; bottom: -20px; animation: fly linear forwards; z-index: 999; pointer-events: none; }
+@keyframes fly { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
