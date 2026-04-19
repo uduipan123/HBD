@@ -1,72 +1,41 @@
 * { box-sizing: border-box; }
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f0f2f5;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-}
+body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; height: 100vh; display: flex; justify-content: center; }
 
-.page { display: none; width: 100%; max-width: 400px; height: 100vh; background: white; flex-direction: column; }
+.page { display: none; width: 100%; max-width: 400px; height: 100vh; background: white; flex-direction: column; overflow: hidden; }
 .page.active { display: flex; }
 
-/* Page 1: Login */
-.login-container { padding: 40px; text-align: center; margin-top: 100px; }
-.btn-login { padding: 10px 20px; background: #00a2ff; color: white; border: none; border-radius: 5px; cursor: pointer; }
-#error-msg { color: red; display: none; margin-top: 10px; font-size: 14px; }
+/* Header & Navigasi */
+.header { background-color: #00a2ff; color: white; padding: 20px; text-align: center; position: relative; }
+.header-title { font-weight: bold; font-size: 1.2rem; }
+.back-link { position: absolute; left: 15px; top: 22px; background: none; border: none; color: white; cursor: pointer; font-size: 14px; }
 
-/* Page 2: Home Page (Gaya Gambar) */
-.header {
-    background-color: #00a2ff; /* Warna biru sesuai gambar */
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
+/* Menu Grid */
+.menu-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 30px 20px; }
+.menu-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+.icon-box { width: 80px; height: 80px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 40px; margin-bottom: 10px; }
 
-.menu-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Membagi 2 kolom */
-    gap: 20px;
-    padding: 30px 20px;
-}
+/* Content Area */
+.content-area { padding: 20px; display: flex; flex-direction: column; align-items: center; flex: 1; overflow-y: auto; }
 
-.menu-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.menu-item:active { transform: scale(0.9); }
-
-.icon-box {
-    width: 80px;
-    height: 80px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-    margin-bottom: 10px;
-}
-
-.menu-item p { margin: 0; font-size: 14px; color: #555; font-weight: 500; }
-
-/* Page 3: Kartu Ucapan */
-.header-pink { background: #ff4081; padding: 15px; }
-.back-link { background: none; border: none; color: white; cursor: pointer; }
-.card-content { display: flex; justify-content: center; align-items: center; height: 100%; }
-
-/* Kartu 3D (Singkat) */
-.birthday-card { width: 250px; height: 350px; position: relative; transform-style: preserve-3d; transition: 1s; }
+/* Kartu 3D */
+.birthday-card { width: 250px; height: 350px; position: relative; transform-style: preserve-3d; transition: 1s; margin-top: 20px; }
 .card-front { background: #ff4081; color: white; position: absolute; width: 100%; height: 100%; z-index: 2; transform-origin: left; transition: 1s; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
 .card-inside { background: #fff; border: 1px solid #ddd; position: absolute; width: 100%; height: 100%; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 10px; text-align: center; padding: 10px; }
 .birthday-card.open .card-front { transform: rotateY(-160deg); }
 
+/* Foto Grid */
+.photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.photo-grid img { width: 100%; border-radius: 10px; }
+
+/* Music Disc Animation */
+.disc { font-size: 80px; animation: rotate 3s linear infinite; margin-bottom: 30px; }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
 /* Efek Hati */
 .heart-fly { position: fixed; bottom: -20px; animation: fly linear forwards; z-index: 999; pointer-events: none; }
 @keyframes fly { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+
+/* Login */
+.login-container { padding: 40px; text-align: center; margin-top: 100px; }
+.btn-login { padding: 10px 20px; background: #00a2ff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+#error-msg { color: red; display: none; margin-top: 10px; font-size: 14px; }
