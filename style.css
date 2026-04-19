@@ -1,90 +1,55 @@
 body {
+    margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fce4ec; /* Pink muda */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); /* Pink Gradient */
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
 }
 
-.birthday-card {
-    position: relative;
-    width: 300px;
-    height: 400px;
-    cursor: pointer;
-    transform-style: preserve-3d;
-    transform: perspective(1000px);
-    transition: 1s;
-}
-
-/* Animasi Buka Kartu */
-.birthday-card:hover {
-    transform: perspective(1000px) rotate(-10deg);
-}
-
-.birthday-card:hover .card-front {
-    transform: rotateY(-160deg);
-}
-
-/* Bagian Depan */
-.card-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #ff4081; /* Pink Terang */
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    transform-origin: left;
-    transition: 1s;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
-    color: white;
+.glass-box {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-.front-content h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.cake {
-    font-size: 5rem;
-    margin-top: 20px;
-}
-
-/* Bagian Dalam */
-.card-inside {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
-    color: #333;
-}
-
-.card-inside h2 {
+.menu-btn {
+    padding: 15px;
+    background: white;
     color: #ff4081;
-}
-
-.wish {
-    font-style: italic;
-    color: #e91e63;
+    border: none;
+    border-radius: 12px;
     font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.signature {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #777;
+.menu-btn:hover {
+    transform: scale(1.05);
+    background: #ff4081;
+    color: white;
 }
+
+/* Efek Hati Melayang */
+.heart-fly {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: fly linear forwards;
+    z-index: -1;
+}
+
+@keyframes fly {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Kode kartu tetap sama seperti sebelumnya, sesuaikan warna ke #ff4081 */
