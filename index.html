@@ -52,19 +52,58 @@
     </div>
 
     <div id="card-page" class="page">
-        <div class="header-pink">
+        <div class="header" style="background: #ff4081;">
             <button class="back-link" onclick="showPage('landing-page')">⬅ Kembali</button>
+            <span class="header-title">Surat Cinta</span>
         </div>
-        <div class="card-content">
+        <div class="content-area">
             <div class="birthday-card">
-                <div class="card-front">
-                    <h2>Klik Sayang ❤️</h2>
-                </div>
+                <div class="card-front"><h2>Klik Sayang ❤️</h2></div>
                 <div class="card-inside">
                     <h3>Happy Bday Pika!</h3>
                     <p>Semoga bahagia terus bareng aku ya!</p>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="photo-page" class="page">
+        <div class="header" style="background: #4caf50;">
+            <button class="back-link" onclick="showPage('landing-page')">⬅ Kembali</button>
+            <span class="header-title">Momen Kita</span>
+        </div>
+        <div class="content-area">
+            <div class="photo-grid">
+                <img src="https://via.placeholder.com/150" alt="Foto 1">
+                <img src="https://via.placeholder.com/150" alt="Foto 2">
+                <img src="https://via.placeholder.com/150" alt="Foto 3">
+                <img src="https://via.placeholder.com/150" alt="Foto 4">
+            </div>
+        </div>
+    </div>
+
+    <div id="music-page" class="page">
+        <div class="header" style="background: #673ab7;">
+            <button class="back-link" onclick="showPage('landing-page')">⬅ Kembali</button>
+            <span class="header-title">Lagu Kita</span>
+        </div>
+        <div class="content-area">
+            <div class="music-card">
+                <div class="disc">🎵</div>
+                <audio controls>
+                    <source src="link-lagu-kamu.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+    </div>
+
+    <div id="video-page" class="page">
+        <div class="header" style="background: #f44336;">
+            <button class="back-link" onclick="showPage('landing-page')">⬅ Kembali</button>
+            <span class="header-title">Video Spesial</span>
+        </div>
+        <div class="content-area">
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
